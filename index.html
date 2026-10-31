@@ -86,7 +86,8 @@
               title="LinkedIn">
               <i class="bi bi-linkedin"></i>
             </a>
-            <a href="mailto:fortunelovenskycharlesmax@gmail.com" class="text-light fs-4 text-decoration-none" title="Imel">
+            <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=fortunelovenskycharlesmax%40gmail.com"
+              target="_blank" rel="noopener noreferrer" class="text-light fs-4 text-decoration-none" title="Imel">
               <i class="bi bi-envelope-fill"></i>
             </a>
           </div>
@@ -464,7 +465,8 @@
           class="text-secondary text-decoration-none mx-2 fs-5">
           <i class="bi bi-linkedin"></i>
         </a>
-        <a href="mailto:fortunelovenskycharlesmax@gmail.com" class="text-secondary text-decoration-none mx-2 fs-5">
+        <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=fortunelovenskycharlesmax%40gmail.com"
+          target="_blank" rel="noopener noreferrer" class="text-secondary text-decoration-none mx-2 fs-5">
           <i class="bi bi-envelope"></i>
         </a>
       </div>
@@ -497,8 +499,15 @@
         return;
       }
 
-      const subject = encodeURIComponent(formData.get('subject'));
-      window.location.href = `mailto:fortunelovenskycharlesmax@gmail.com?subject=${subject}&body=${encodeURIComponent(message)}`;
+      const gmailUrl = new URL('https://mail.google.com/mail/');
+      gmailUrl.search = new URLSearchParams({
+        view: 'cm',
+        fs: '1',
+        to: 'fortunelovenskycharlesmax@gmail.com',
+        su: formData.get('subject'),
+        body: message
+      }).toString();
+      window.location.href = gmailUrl.toString();
     });
   </script>
 </body>
